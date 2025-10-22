@@ -126,13 +126,15 @@ typedef struct{
    int payerparseance;
    int payerparseance;
 }Cardio;
-
+void sinscrire();
+void annulerinscription();
 
 
 
 
    
    
+
 
 
 
