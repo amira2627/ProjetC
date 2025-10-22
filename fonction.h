@@ -128,12 +128,13 @@ typedef struct{
 }Cardio;
 void sinscrire();
 void annulerinscription();
-
+#endif
 
 
 
    
    
+
 
 
 
