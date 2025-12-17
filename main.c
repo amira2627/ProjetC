@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "callbacks.h"
 
@@ -22,28 +22,25 @@ static void connect_glade_signals(const gchar *handler_name,
 
     GCallback cb = NULL;
 
-    /* admin / fiche */
     if      (strcmp(handler_name,"on_khayri40_clicked")==0)  cb = G_CALLBACK(on_khayri40_clicked);
     else if (strcmp(handler_name,"on_khayri300_clicked")==0) cb = G_CALLBACK(on_khayri300_clicked);
     else if (strcmp(handler_name,"on_khayri9_clicked")==0)   cb = G_CALLBACK(on_khayri9_clicked);
     else if (strcmp(handler_name,"on_khayri8_clicked")==0)   cb = G_CALLBACK(on_khayri8_clicked);
     else if (strcmp(handler_name,"on_khayri7_clicked")==0)   cb = G_CALLBACK(on_khayri7_clicked);
-
     else if (strcmp(handler_name,"on_khayri41_clicked")==0)  cb = G_CALLBACK(on_khayri41_clicked);
 
-    /* compat */
     else if (strcmp(handler_name,"on_khayri81_clicked")==0)  cb = G_CALLBACK(on_khayri81_clicked);
     else if (strcmp(handler_name,"on_khayri80_clicked")==0)  cb = G_CALLBACK(on_khayri80_clicked);
     else if (strcmp(handler_name,"on_fiche_modifier_clicked")==0) cb = G_CALLBACK(on_fiche_modifier_clicked);
 
-    /* stats */
     else if (strcmp(handler_name,"on_khayri900_clicked")==0) cb = G_CALLBACK(on_khayri900_clicked);
 
-    /* treeview */
+    /* optionnel: filtre entry7 (si signal insert-text connecté dans Glade) */
+    else if (strcmp(handler_name,"on_entry7_insert_text")==0) cb = G_CALLBACK(on_entry7_insert_text);
+
     else if (strcmp(handler_name,"on_treeview1_row_activated")==0)
         cb = G_CALLBACK(on_treeview1_row_activated);
 
-    /* destroy */
     else if (strcmp(handler_name,"on_window_destroy")==0)
         cb = G_CALLBACK(on_window_destroy);
 
@@ -75,7 +72,6 @@ int main(int argc, char *argv[])
 
     glade_xml_signal_autoconnect_full(xml, connect_glade_signals, NULL);
 
-    /* Fenêtres */
     GtkWidget *win_admin = glade_xml_get_widget(xml, "admin gestion");
     if (!win_admin) win_admin = glade_xml_get_widget(xml, "window1");
 
